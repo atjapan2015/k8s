@@ -10,7 +10,10 @@ spec:
       containers:
       - image: atjapan2015/mysql-client-initdb:8.0.12
         name: mysql-client-job
-        command: ["bash", "/tmp/init.sh"]
+        args:
+        - /bin/bash
+        - -c
+        - sleep 15; /bin/bash /tmp/init.sh; exit
         env:
         - name: MYSQL_ROOT_PASSWORD
           valueFrom:
